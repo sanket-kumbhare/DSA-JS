@@ -8,9 +8,9 @@ class Node {
 class LinkedList {
 	constructor(value) {
 		const node = new Node(value);
-		this.head = node
+		this.head = node;
 		this.tail = this.head;
-		this.length = 1
+		this.length = 1;
 	}
 
 	append(value) {
@@ -51,6 +51,19 @@ class LinkedList {
 		return currentNode;
 	}
 
+	reverse() {
+		let first = this.head;
+		let second = first.next;
+		while (second != null) {
+			let temp = second.next;
+			second.next = first;
+			first = second;
+			second = temp;
+		}
+		this.head.next = null;
+		this.head = first
+	}
+
 	printList() {
 		let result = ""
 		let currentNode = this.head;
@@ -67,10 +80,11 @@ linkedList.append(20);
 linkedList.append(30);
 linkedList.append(40);
 linkedList.append(50);
+linkedList.reverse();
 linkedList.printList();
 
-linkedList.insert(60, 2);
-linkedList.printList();
+// linkedList.insert(60, 2);
+// linkedList.printList();
 
 // linkedList.remove(1);
 // linkedList.printList();
